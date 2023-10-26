@@ -16,7 +16,8 @@ class Post extends Model
     'company',
     'description',
     'type',
-    'salary',
+    'min_salary',
+    'max_salary',
 
    ];
 

@@ -16,15 +16,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
+// ------------
+Route::get('/',[PostController::class,'home'])->name('home');
 
-Route::get('post',[PostController::class,'addPost'])->name('addpost');
+// --------protectd-----
+Route::get('post',[PostController::class,'addPost'])->middleware('auth')->name('addpost');
 
 Route::get('newpost',function(){
     return view('post.newpost');
 })->name('post');
+
+Route::get('/dashboard',[PostController::class,'show']
+)->middleware(['auth', 'verified'])->name('dashboard');
+// -------nd--------
+
+Route::get('/manager-dashboard',function(){
+    view('auth.manager-dashboard');
+})->name('manager_login');
 
 Route::get('post/{task}',[PostController::class,'delete'])->name('delete');
 
@@ -36,8 +47,7 @@ Route::put('post/{id}',[PostController::class,'change'])->name('change');
 Route::post('/dashboard',[PostController::class,'index'])->name('stored');
 
 
-Route::get('/dashboard',[PostController::class,'show']
-)->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

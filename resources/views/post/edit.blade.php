@@ -9,39 +9,42 @@
 
     @extends('welcome')
     @section('content')
-    <div  class="w-[500px] flex justify-center  p-10  ">
-    <form class="flex flex-col" action="{{route('change',['id' => $task->id])}}" method="post">
+    <div  class="w-[800px] rounded-lg border border-2 m-auto flex justify-center ">
+    <form class="grid grid-cols-4 grid-rows-repeat-3-200 gap-4 p-4 m-4 w-[100%] flex-col" action="{{route('change',['id' => $task->id])}}" method="get">
         @csrf
         @method('put')
 
-
-<div class="flex items-center gap-4 mb-4">
-   <label  class="w-[100px]" for="profile" >Job Profile</label>
-   <textarea id="profile" type="text" name="profile" >{{$task->profile}}</textarea>
+<div  class=" col-span-2   ">
+   <!-- <label for="profile" >Job Profile</label> -->
+   <input class="w-[100%]  text-sm text-gray-600 rounded-2xl " id="profile" type="text" value="{{$task->profile}}" placeholder="profile" name="profile">
 </div>
 
-<div class="flex items-center gap-4 mb-4">
-   <label class="w-[100px]" for="description" >Job Description</label>
-   <textarea id="Description" name="description" type="text">{{$task->description}}</textarea>
+<div class=" col-span-2 row-span-2">
+   <!-- <label for="description"5 >Job Description</label> -->
+   <textarea class=" w-[100%] h-[100%] rounded-2xl placeholder:absolute resize-none text-sm text-gray-600  "   id=" Description" placeholder="description" name="description" type="text">{{$task->description}}</textarea>
 </div>
 
-<div class="flex items-center gap-4 mb-4">
-   <label class="w-[100px]" for="company" >Job Company</label>
-   <textarea id="company" name="company" type="text">{{$task->company}}</textarea>
+<div class="col-span-1">
+   <!-- <label for="company" >Job Company</label> -->
+   <input class="w-[100%] rounded-2xl text-sm text-gray-600" id="company" name="company" value="{{$task->company}}" placeholder="company" type="text">
 </div>
 
-<div class="flex items-center gap-4 mb-4">
-   <label class="w-[100px]" for="type" >Job type</label>
-   <textarea id="type" name="type" type="text">{{$task->type}}</textarea>
+<div class="col-span-1">
+   <!-- <label for="type" >Job type</label> -->
+   <input class="w-[100%] rounded-2xl text-sm text-gray-600" id="type" value="{{$task->type}}" name="type" placeholder="type" type="text">
 
 </div>
 
-<div class="flex items-center gap-4 mb-4">
-   <label class="w-[100px]" for="salary" >Salary</label>
-   <input  id="salary" name="salary" type="number" value="{{$task->salary}}">
+<div>
+   <!-- <label for="salary" >Salary</label> -->
+   <input class="w-[100%] rounded-2xl text-sm text-gray-600" id="min_salary" value="{{$task->min_salary}}" name="min_salary" placeholder="min-salary" type="number">
    </div>
-   <div class="">
-      <button class="border  block border-1 m-auto p-2 px-4 rounded-lg font-bold text-gray-700 bg-blue-400" type="submit"  >UPDATE POST</button>
+<div>
+   <!-- <label for="salary" >Salary</label> -->
+   <input class="w-[100%] rounded-2xl text-sm text-gray-600" id="max_salary" value="{{$task->max_salary}}" name="max_salary" placeholder="max-salary" type="number">
+   </div>
+   <div class="col-start-3 col-span-2  w-[100%] bg-green-800 rounded-xl ">
+      <button class=" p-2 w-[100%]" type="submit" >EDIT POST</button>
  </div>
     </form>
 </div>
