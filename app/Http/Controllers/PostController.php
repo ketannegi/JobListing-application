@@ -20,6 +20,12 @@ class PostController extends Controller{
     return view('post.post', compact('tasks'));
 
   }
+  public function home(){
+
+    $tasks=Post::all();
+    return view('home', compact('tasks'));
+
+  }
 
 //   ---------delete post controller-------
 
@@ -51,7 +57,8 @@ public function delete($task){
             'description' => 'required',
             'company' => 'required',
             'type' => 'required',
-            'salary' => 'required|integer',
+            'min_salary' => 'required|integer',
+            'max_salary' => 'required|integer',
         ]);
 
 
@@ -62,8 +69,8 @@ public function delete($task){
              $forms->description = $request->description;
              $forms->company =$request->company;
              $forms->type= $request->type;
-             $forms->salary =$request->salary;
-
+             $forms->min_salary =$request->min_salary;
+             $forms->max_salary =$request->max_salary;
              $forms->save();
              $tasks = Post::all();
         return   redirect()->route('addpost',compact('tasks'));
@@ -76,12 +83,12 @@ public function delete($task){
 
         $request->validate([
 
-            'profile' => 'required',
-            'description' => 'required',
-            'company' => 'required',
-            'type' => 'required',
-            'salary' => 'required|integer',
-
+            'profile'=> 'required',
+            'description'=> 'required',
+            'company'=> 'required',
+            'type'=> 'required',
+            'min_salary'=> 'required|integer',
+            'max_salary'=> 'required|integer',
         ]);
         // $num =Post::find($id);
 
@@ -91,7 +98,8 @@ public function delete($task){
         $update->description = $request->description;
         $update->company =$request->company;
         $update->type= $request->type;
-        $update->salary =$request->salary;
+        $update->min_salary =$request->min_salary;
+        $update->max_salary =$request->max_salary;
         $update->save();
         return redirect()->route('addpost');
 

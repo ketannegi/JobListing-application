@@ -22,7 +22,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                <a href="{{route('welcome')}}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-black focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
+                <a href="{{route('home')}}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-black focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
 
                 </div>
             </div>
@@ -32,7 +32,7 @@
        <h1 class="font-extrabold  px-4 py-2">
         YOUR JOB POST
        </h1>
-       <p class="px-4 py-2 text-red-500">
+       <p class="px-4 py-2 font-bold text-gray-500">
        <a href="{{route('post')}}"> ADD NEW POST </a>
        </p>
 
